@@ -5,7 +5,8 @@
   <p>ユーザーネーム：<%= @bar.user.name %></p>
   <p>投稿日時：<%= @bar.created_at.strftime('%Y/%m/%d') %></p>
   <% if @bar.user == current_user %>
-    <%= link_to "削除", bar_path(@bar), method: :delete %>
+  <%= link_to 'Edit', edit_bar_path(@bar) %>
+  <%= link_to "Delete", bar_path(@bar), method: :delete %>
   <% end %>
 
-</div
+</div>

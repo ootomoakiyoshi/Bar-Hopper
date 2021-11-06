@@ -4,9 +4,9 @@
 <div>
  <%= link_to bar_path(bar.id) do %>
   <%= attachment_image_tag bar, :image %>
- <% end %>
   <!--<p>投稿ユーザー画像：後ほどアイコン入れるAP2 3章</p>-->
   <p>店名：<%= bar.bar_name %></p>
+  <% end %>
   <p>説明：<%= bar.caption %></p>
   <p>ユーザーネーム：<%= bar.user.name %></p>
 </div>
