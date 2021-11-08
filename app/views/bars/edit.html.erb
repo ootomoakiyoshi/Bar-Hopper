@@ -12,5 +12,8 @@
 <div class="form-group">
   <%= f.submit class: 'btn btn-success' %>
 </div>
-
+<div>
+<%= link_to 'Show', bar_path(@bar), class: "bark_#{@bar.id}" %> |
+<%= link_to 'Back', bars_path, class: "back" %>
+</div>
 <% end %>

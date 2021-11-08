@@ -17,6 +17,7 @@ end
 
 def show
  @bar = Bar.find(params[:id])
+ @comment = Comment.new
 end
 
 def edit
