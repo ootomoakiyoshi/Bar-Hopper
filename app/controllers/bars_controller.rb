@@ -12,7 +12,7 @@ def create
 end
 
 def index
-  @bars = Bar.all
+  @bars = Bar.page(params[:page]).reverse_order
 end
 
 def show
