@@ -1,0 +1,17 @@
+<table class='table'>
+	  <th>name</th>
+	  <th><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+  <!--フォロー・フォローワー数リンク-->
+
+</table>
+
+<div class='row'>
+  <% if user.id == current_user.id %>
+  <%= link_to 'プロフィール編集',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+  <% end %>
+</div>
