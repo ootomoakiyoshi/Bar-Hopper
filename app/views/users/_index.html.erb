@@ -8,6 +8,7 @@
   </thead>
    <% @users.each do |user| %>
       <tr>
+        <tb><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></tb>
         <td><%= user.name %></td>
         <td><%= user.introduction %></td>
        <!--フォロー機能-->

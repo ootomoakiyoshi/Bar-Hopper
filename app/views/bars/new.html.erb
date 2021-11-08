@@ -1,4 +1,11 @@
 <h1>Bar Post</h1>
+<% if @bar.errors.any? %>
+  <%= @bar.errors.count %>件のエラーが発生しました
+  <% @bar.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <%= form_with model: @bar, local:true do |f| %>
   <h4>Bar 画像</h4>
   <%= f.attachment_field :image %>

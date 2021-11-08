@@ -3,8 +3,8 @@
 <% @bars.each do |bar| %>
 <div>
  <%= link_to bar_path(bar.id) do %>
-  <%= attachment_image_tag bar, :image %>
-  <!--<p>投稿ユーザー画像：後ほどアイコン入れるAP2 3章</p>-->
+<%= attachment_image_tag bar, :image, :fill, 400, 400  %>
+<!--<p>投稿ユーザー画像：後ほどアイコン入れるAP2 3章</p>-->
   <p>店名：<%= bar.bar_name %></p>
   <% end %>
   <p>説明：<%= bar.caption %></p>

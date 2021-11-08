@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
  root to: 'homes#top'
- root to: 'homes#about'
+ get 'home/about' => 'homes#about'
+
  resources :bars, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
 
   resource :favorites, only: [:create, :destroy]
