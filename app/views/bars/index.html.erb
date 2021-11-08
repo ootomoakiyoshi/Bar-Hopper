@@ -9,6 +9,6 @@
   <% end %>
   <p>説明：<%= bar.caption %></p>
   <p>ユーザーネーム：<%= bar.user.name %></p>
-  <p><%= link_to "#{bar.comments.count} コメント", bar_path(bar.id) %></p>
+  <p><%= link_to "#{bar.comments.count} コメント", bar_path(bar.id) %>　<%= link_to "#{bar.favorites.count} いいね", bar_path(bar.id) %></p>
 </div>
 <% end %>

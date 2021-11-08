@@ -11,7 +11,21 @@
   <%= link_to "Delete", bar_path(@bar), method: :delete %>
   <% end %>
 
+  <% if @bar.favorited_by?(current_user) %>
+    <p>
+      <%= link_to bar_favorites_path(@bar), method: :delete do %>
+        ♥<%= @bar.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to bar_favorites_path(@bar), method: :post do %>
+        ♡<%= @bar.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
 </div>
+
 
 <div>
 <p>コメント件数：<%= @bar.comments.count %></p>
