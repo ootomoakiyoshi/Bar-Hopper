@@ -1,0 +1,21 @@
+<h1>お問い合わせフォーム</h1>
+
+<%= form_for(@contact, url: confirm_path) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'name*' %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+   <div class="form-group">
+    <%= f.label :email, 'email*' %>
+    <%= f.text_field :email, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :message, 'message*' %>
+    <%= f.text_area :message, size: '8x8', class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= f.submit '入力内容の確認' %>
+  </div>
+<% end %>

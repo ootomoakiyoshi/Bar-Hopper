@@ -14,5 +14,12 @@ end
   resources :relationships, only: [:create, :destroy]
   get 'followings/:id' => 'relationships#followings', as: 'followings'
   get 'followers/:id' => 'relationships#followers', as: 'followers'
+  
+  # お問い合わせフォーム
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
+
 
 end
