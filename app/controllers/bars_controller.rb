@@ -8,7 +8,7 @@ def create
   @bar = Bar.new(bar_params)
   @bar.user_id = current_user.id
    if @bar.save
-      redirect_to barss_path
+      redirect_to bars_path
    else
       render :new
    end
