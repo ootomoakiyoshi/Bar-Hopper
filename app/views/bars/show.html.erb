@@ -1,5 +1,4 @@
 <h2>Bar 詳細ページ</h2>
-
 <div>
   <%= attachment_image_tag @bar, :image, :fill, 400, 400   %>
   <p>ショップ名：<%= @bar.bar_name %></p>
@@ -10,10 +9,10 @@
   <%= link_to 'Edit', edit_bar_path(@bar) %>
   <%= link_to "Delete", bar_path(@bar), method: :delete %>
   <% end %>
-   <td id="favorite_btn<%= @bar.id %>">
-   <%= render "favorites/favorite_btn" ,bar: @bar %>
-  </td>
-</div>
+  <div id="favorite_buttons_<%= @bar.id %>">
+   <%= render "favorites/favorite", bar: @bar %>
+  </div>
+ </div>
 
 
 <div>
