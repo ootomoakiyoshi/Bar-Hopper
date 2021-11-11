@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Bar Name</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+
+    <tbody>
+    <% bars.each do |bar| %>
+      <tr>
+        <td><%= attachment_image_tag bar, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %></td>
+        <td><%= link_to bar.bar_name, bar_path(bar) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
