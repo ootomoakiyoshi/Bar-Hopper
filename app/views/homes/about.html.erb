@@ -1,10 +1,13 @@
-<h1>aboutページ</h1>
-<h2>Bar Hopper~~~~~</h2>
-<h4>説明</h4>
-<h4>説明</h4>
-
-
-
-
- <%= link_to 'お問い合わせ', new_contact_path, class: 'nav-link text-dark' %>
-
+<main>
+<div class='container'>
+  <div class='row'>
+    <h1 class="px-3 mx-auto">Welcome to <i class="fas fa-glass-martini-alt"></i></i><strong>Bar Hopper</strong>!</h1>
+  </div>
+  <h3 class="px-3 mx-auto">Bar Hopperでは<i class="fas fa-cocktail"></i>をこよなく愛する人の為のサイトです。</h3>
+  <h3 class="px-3 mx-auto">皆様でオススメのBarを紹介共有しちゃいましょう！！</h3>
+  <div class="row">
+   <i class="fas fa-mail-bulk"></i>
+   <%= link_to 'お問い合わせ', new_contact_path, class: 'nav-link text-dark' %>
+  </div>
+</div>
+</main>

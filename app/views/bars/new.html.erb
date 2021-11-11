@@ -1,17 +1,18 @@
-<h1>Bar Post</h1>
-<% if @bar.errors.any? %>
-  <%= @bar.errors.count %>件のエラーが発生しました
-  <% @bar.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
 
-<%= form_with model: @bar, local:true do |f| %>
-  <h4>Bar 画像</h4>
-  <%= f.attachment_field :image %>
-  <h4>Bar Name</h4>
-  <%= f.text_field :bar_name %>
-  <h4>Opinion</h4>
-  <%= f.text_area :caption %>
-  <%= f.submit '投稿' %>
-<% end %>
+  <h1>Bar Post</h1>
+    <% if @bar.errors.any? %>
+      <%= @bar.errors.count %>件のエラーが発生しました
+      <% @bar.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+
+    <%= form_with model: @bar, local:true do |f| %>
+      <h4>Bar 画像</h4>
+      <%= f.attachment_field :image %>
+      <h4>Bar Name</h4>
+      <%= f.text_field :bar_name %>
+      <h4>Opinion</h4>
+      <%= f.text_area :caption %>
+      <%= f.submit '投稿' %>
+    <% end %>
