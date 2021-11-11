@@ -14,7 +14,9 @@
   <tb>説明：<%= bar.caption %></tb>
   <tb>Name：<%= bar.user.name %></tb>
   <tb><%= link_to "#{bar.comments.count} コメント", bar_path(bar.id) %></tb>
-  <tb><%= link_to "#{bar.favorites.count} いいね", bar_path(bar.id) %></tb>
+   <tb id="favorite_buttons_<%= bar.id %>">
+    <%= render "favorites/favorite", bar: bar %>
+  </tb>
         <% end %>
        <%= paginate @bars %>
     </th>
