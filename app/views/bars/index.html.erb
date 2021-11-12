@@ -6,19 +6,17 @@
  <% @bars.each do |bar| %>
   <tr>
     <th> <%= link_to bar_path(bar.id) do %>
-      <%= attachment_image_tag bar, :image, :fill, 350, 350  %>
-<!--<p>投稿ユーザー画像：後ほどアイコン入れるAP2 3章</p>-->
-  <tb>店名：<%= bar.bar_name %></tb>
-  <% end %>
-
-  <tb>説明：<%= bar.caption %></tb>
-  <tb>Name：<%= bar.user.name %></tb>
-  <tb><%= link_to "#{bar.comments.count} コメント", bar_path(bar.id) %></tb>
-   <tb id="favorite_buttons_<%= bar.id %>">
-    <%= render "favorites/favorite", bar: bar %>
-  </tb>
-        <% end %>
-       <%= paginate @bars %>
+        <%= attachment_image_tag bar, :image, :fill, 350, 350  %>
+      <tb>店名：<%= bar.bar_name %></tb>
+      <% end %>
+      <tb>説明：<%= bar.caption %></tb>
+      <tb>Name：<%= bar.user.name %></tb>
+      <tb><%= link_to "#{bar.comments.count} コメント", bar_path(bar.id) %></tb>
+      <tb id="favorite_buttons_<%= bar.id %>">
+       <%= render "favorites/favorite", bar: bar %>
+      </tb>
+           <% end %>
+          <%= paginate @bars %>
     </th>
    </tr>
 </table>
