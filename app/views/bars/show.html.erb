@@ -1,36 +1,62 @@
-<h2>Bar detail</h2>
-<div>
-  <%= attachment_image_tag @bar, :image, :fill, 400, 400   %>
-  <p>ショップ名：<%= @bar.bar_name %></p>
-  <p>説明：<%= @bar.caption %></p>
-  <p>ユーザーネーム：<%= @bar.user.name %></p>
-  <p>投稿日時：<%= @bar.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @bar.user == current_user %>
-  <%= link_to 'Edit', edit_bar_path(@bar) %>
-  <%= link_to "Delete", bar_path(@bar), method: :delete %>
-  <% end %>
-  <div id="favorite_buttons_<%= @bar.id %>">
-   <%= render "favorites/favorite", bar: @bar %>
-  </div>
- </div>
- 
-<div>
-<p>コメント件数：<%= @bar.comments.count %></p>
-<% @bar.comments.each do |comment| %>
-  <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-<!--コメント者がログインユーザーなら削除可能-->
-   <% if comment.user == current_user %>
-  <div>
-    <%= link_to "削除", bar_comment_path(comment.bar, comment), method: :delete %>
-  </div>
-  <% end %>
+<h1 class="text-center">Bar Detail</h1>
+<div class='container'>
+  <div class='row'>
+   <div class='col-lg-5'>
+    <div>
+     <%= attachment_image_tag @bar, :image, :fill, 400, 400   %>
+     <p>ショップ名：<%= @bar.bar_name %></p>
+     <p>説明：<%= @bar.caption %></p>
+     <p>ユーザーネーム：<%= @bar.user.name %></p>
+     <p>投稿日時：<%= @bar.created_at.strftime('%Y/%m/%d') %></p>
+      <% if @bar.user == current_user %>
+      <%= link_to 'Edit', edit_bar_path(@bar) %>
+      <%= link_to "Delete", bar_path(@bar), method: :delete %>
+      <% end %>
+      <div id="favorite_buttons_<%= @bar.id %>">
+       <%= render "favorites/favorite", bar: @bar %>
+      </div>
+     </div>
+      <div>
+      <p>コメント件数：<%= @bar.comments.count %></p>
+      <% @bar.comments.each do |comment| %>
+        <%= comment.user.name %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      <!--コメント者がログインユーザーなら削除可能-->
+         <% if comment.user == current_user %>
+        <div>
+          <%= link_to "削除", bar_comment_path(comment.bar, comment), method: :delete %>
+        </div>
+        <% end %>
+      <% end %>
+      </div>
+       <div>
+        <%= form_with(model:[@bar, @comment], local: true) do |f| %>
+        <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+        <% end %>
+        </div>
+       </div>  
+        <div class='col-lg-7'>
+          
+          <script async src="https://maps.googleapis.com/maps/api/js?key=APIキー
+          &callback=initMap"></script>
+          <script>
+            function initMap() {
+              var mapPosition = new google.maps.LatLng( 35.6882495,139.6856557 );//緯度経度
+              var map = new google.maps.Map(document.getElementById('gmap'), {
+              zoom: 17,//ズーム
+              center: mapPosition
+            });
+              var marker = new google.maps.Marker({
+              position: mapPosition,
+              map: map
+              });
+            }
+          </script>
+          <div id="gmap"></div>
 
-<% end %>
+ </div>
 </div>
-<div>
-<%= form_with(model:[@bar, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
-</div>
+ 
+
+
