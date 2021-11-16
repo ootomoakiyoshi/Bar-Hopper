@@ -34,7 +34,7 @@ end
 def update
   @bar = Bar.find(params[:id])
   if @bar.update(bar_params)
-    redirect_to bar_path(@bar), notice: "You have updated book successfully."
+    redirect_to bar_path(@bar), notice: "You have updated Bar successfully."
   else
     render "edit"
   end
