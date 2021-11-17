@@ -34,7 +34,7 @@ class BarsController < ApplicationController
  def update
   @bar = Bar.find(params[:id])
   if @bar.update(bar_params)
-   redirect_to bar_path(@bar), notice: "You have updated Bar successfully."
+   redirect_to bar_path(@bar.id), notice: "You have updated Bar successfully."
   else
    render "edit"
   end
