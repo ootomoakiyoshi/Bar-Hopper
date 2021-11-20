@@ -37,23 +37,42 @@
         </div>
        </div>
         <div class='col-lg-7'>
-          <script async src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>
-          &callback=initMap"></script>
-
-          <script>
-            function initMap() {
-              var mapPosition = new google.maps.LatLng( 35.6882495,139.6856557 );//緯度経度
-              var map = new google.maps.Map(document.getElementById('gmap'), {
-              zoom: 17,//ズーム
-              center: mapPosition
-            });
-              var marker = new google.maps.Marker({
-              position: mapPosition,
-              map: map
-              });
-            }
-          </script>
           <div id="gmap"></div>
+
+          <style>
+            #gmap {
+              height: 400px;
+              width: 650px;
+            }
+            </style>
+            <!--住所情報が無ければ下記scriptの実行をさせない。-->
+            <% if @bar.latitude.present? && @bar.longitude.present? %>
+            <script>
+              let map
+
+              function initMap(){
+                geocoder = new google.maps.Geocoder()
+                var test ={lat: <%= @bar.latitude %>, lng: <%= @bar.longitude %>};
+
+                map = new google.maps.Map(document.getElementById('gmap'), {
+                  center: test,
+                  zoom: 15,
+                });
+
+                var contentString = '住所：<%= @bar.address %>';
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                marker = new google.maps.Marker({
+                  position:  test,
+                  map: map,
+                  title: contentString
+                });
+              }
+            </script>
+             <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
+            <% end %>
 
  </div>
 </div>
