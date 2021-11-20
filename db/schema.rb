@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_073538) do
+ActiveRecord::Schema.define(version: 2021_11_20_080025) do
 
   create_table "bars", force: :cascade do |t|
     t.text "bar_name"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2021_11_09_073538) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "comments", force: :cascade do |t|
