@@ -64,6 +64,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "bar_hopper_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  # 本番環境動作の為、記載
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       port: 587,
