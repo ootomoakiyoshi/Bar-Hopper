@@ -1,78 +1,76 @@
 <h1 class="text-center">Bar Detail</h1>
 <div class='container'>
   <div class='row'>
-   <div class='col-lg-5'>
+    <div class='col-lg-5'>
     <div>
-     <%= attachment_image_tag @bar, :image, :fill, 400, 400   %>
-     <p>ショップ名：<%= @bar.bar_name %></p>
-     <p>説明：<%= @bar.caption %></p>
-     <p>ユーザーネーム：<%= @bar.user.name %></p>
-     <p>投稿日時：<%= @bar.created_at.strftime('%Y/%m/%d') %></p>
+      <%= attachment_image_tag @bar, :image, :fill, 400, 400 %>
+      <p>ショップ名：<%= @bar.bar_name %></p>
+      <p>説明：<%= @bar.caption %></p>
+      <p>ユーザーネーム：<%= @bar.user.name %></p>
+      <p>投稿日時：<%= @bar.created_at.strftime('%Y/%m/%d') %></p>
       <% if @bar.user == current_user %>
-      <%= link_to 'Edit', edit_bar_path(@bar) %>
-      <%= link_to "Delete", bar_path(@bar), method: :delete %>
+        <%= link_to 'Edit', edit_bar_path(@bar) %>
+        <%= link_to "Delete", bar_path(@bar), method: :delete %>
       <% end %>
       <div id="favorite_buttons_<%= @bar.id %>">
-       <%= render "favorites/favorite", bar: @bar %>
+        <%= render "favorites/favorite", bar: @bar %>
       </div>
-     </div>
-      <div>
+    </div>
+    <div>
       <p>コメント件数：<%= @bar.comments.count %></p>
       <% @bar.comments.each do |comment| %>
         <%= comment.user.name %>
         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
       <!--コメント者がログインユーザーなら削除可能-->
-         <% if comment.user == current_user %>
-        <div>
-          <%= link_to "削除", bar_comment_path(comment.bar, comment), method: :delete %>
-        </div>
+        <% if comment.user == current_user %>
+          <div>
+            <%= link_to "削除", bar_comment_path(comment.bar, comment), method: :delete %>
+          </div>
         <% end %>
       <% end %>
-      </div>
-       <div>
-        <%= form_with(model:[@bar, @comment], local: true) do |f| %>
+    </div>
+    <div>
+      <%= form_with(model:[@bar, @comment], local: true) do |f| %>
         <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
         <%= f.submit "送信する" %>
-        <% end %>
-        </div>
-       </div>
-        <div class='col-lg-7'>
-          <div id="gmap"></div>
+      <% end %>
+    </div>
+  </div>
+  <div class='col-lg-7'>
+    <div id="gmap"></div>
+    <style>
+      #gmap {
+        height: 400px;
+        width: 650px;
+      }
+    </style>
+      <!--住所情報が無ければ下記scriptの実行をさせない。-->
+    <% if @bar.latitude.present? && @bar.longitude.present? %>
+      <script>
+        let map
 
-          <style>
-            #gmap {
-              height: 400px;
-              width: 650px;
-            }
-            </style>
-            <!--住所情報が無ければ下記scriptの実行をさせない。-->
-            <% if @bar.latitude.present? && @bar.longitude.present? %>
-            <script>
-              let map
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+          var test ={lat: <%= @bar.latitude %>, lng: <%= @bar.longitude %>};
 
-              function initMap(){
-                geocoder = new google.maps.Geocoder()
-                var test ={lat: <%= @bar.latitude %>, lng: <%= @bar.longitude %>};
+          map = new google.maps.Map(document.getElementById('gmap'), {
+            center: test,
+            zoom: 15,
+          });
 
-                map = new google.maps.Map(document.getElementById('gmap'), {
-                  center: test,
-                  zoom: 15,
-                });
+          var contentString = '住所：<%= @bar.address %>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
 
-                var contentString = '住所：<%= @bar.address %>';
-                var infowindow = new google.maps.InfoWindow({
-                  content: contentString
-                });
-
-                marker = new google.maps.Marker({
-                  position:  test,
-                  map: map,
-                  title: contentString
-                });
-              }
-            </script>
-             <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
-            <% end %>
-
- </div>
+          marker = new google.maps.Marker({
+            position:  test,
+            map: map,
+            title: contentString
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
+    <% end %>
+  </div>
 </div>
