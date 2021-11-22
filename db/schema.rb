@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_080025) do
+ActiveRecord::Schema.define(version: 2021_11_22_091004) do
+
+  create_table "bar_images", force: :cascade do |t|
+    t.string "image_id"
+    t.integer "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_bar_images_on_bar_id"
+  end
 
   create_table "bars", force: :cascade do |t|
     t.text "bar_name"
