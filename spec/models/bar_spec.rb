@@ -8,16 +8,16 @@ RSpec.describe 'Barモデルのテスト', type: :model do
 
     # test_barを作成し、空欄での登録ができるか確認します。
     subject { test_bar.valid? }
-    let(:test_bar) { post }
+    let(:test_bar) { bar }
 
 
-    context 'titleカラム' do
+    context 'bar_nameカラム' do
       it '空欄でないこと' do
         test_bar.bar_name = ''
         is_expected.to eq false;
       end
       it '20文字以下であること' do
-        bar.title = Faker::Lorem.characters(number:21)
+        bar.bar_name = Faker::Lorem.characters(number:21)
         expect(bar.valid?).to eq false;
       end
     end

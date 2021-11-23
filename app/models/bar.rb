@@ -6,7 +6,7 @@ class Bar < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :bar_name, presence: true
+  validates :bar_name, presence: true, length: {maximum: 20}
   validates :caption, presence: true
   validates :image, presence: true
 # 地図機能
