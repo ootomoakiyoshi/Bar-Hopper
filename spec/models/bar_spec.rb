@@ -30,9 +30,9 @@ RSpec.describe 'Barモデルのテスト', type: :model do
     end
 
     # has_manyの関係性で記述するのもありです。
-    # context 'PostCommentモデルとの関係' do
+    # context 'BarCommentモデルとの関係' do
       # it '1:Nとなっている' do
-        # expect(Post.reflect_on_association(:post_comments).macro).to eq :has_many
+        # expect(Post.reflect_on_association(:_comments).macro).to eq :has_many
       # end
     # end
   end
