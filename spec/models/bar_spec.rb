@@ -10,7 +10,6 @@ RSpec.describe 'Barモデルのテスト', type: :model do
     subject { test_bar.valid? }
     let(:test_bar) { bar }
 
-
     context 'bar_nameカラム' do
       it '空欄でないこと' do
         test_bar.bar_name = ''
