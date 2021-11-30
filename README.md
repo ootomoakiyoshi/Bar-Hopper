@@ -54,5 +54,5 @@ https://docs.google.com/spreadsheets/d/1JQJXGBzvqmOF9521mz0bnDN2lyPY-SqCm1V1fC9Q
 - IDE：Cloud9
 
 ## 使用素材
-- ※フリー素材の画像を使用する予定ですが、レイアウト未定の為記述を残させて頂きます。
+- ※フリー素材の画像を使用する予定。
 -
