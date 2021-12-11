@@ -78,6 +78,6 @@ gem 'geocoder'
 
 
 group :production do
-   gem 'mysql2'
+  # gem 'mysql2'
   # pushの際はmysql2のコメント外す
 end
