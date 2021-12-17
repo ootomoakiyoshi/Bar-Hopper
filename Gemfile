@@ -78,5 +78,5 @@ gem 'geocoder'
 
 
 group :production do
- gem 'mysql2'
+gem 'mysql2'
 end
